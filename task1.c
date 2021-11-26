@@ -1,35 +1,40 @@
+#include <ctype.h>
+#include <cs50.h>
 #include <stdio.h>
 
-int main()
+int main(void)
 {
-  int n;
-  int c;
-  int d;
-  int a[100];
-  int b[100];
-  
-  printf("Кількість елементів у масиві\n");
-  scanf("%d", &n);
+    int terminate = 0;
 
-  while (n < 101 && n>0)
-  {
+    int n = get_int("Amount of numbers: ");
 
-  printf("Введіть елементи масиву\n");
-  for (c = 0; c < n ; c++)
-  scanf("%d", &a[c]);
+    int a[n];
 
-  for (c = n - 1, d = 0; c >= 0; c--, d++)
-  b[d] = a[c];
+    for (int i = 0; i < n; i++)
+    {
+        a[i] = get_int("Enter number %i: ", (i+1));
+        
+        if ((a[i] => 1) || (a[i] <= 100))
+        {
+            terminate++;
+        }
+        
+}
+
+    if (terminate == 0)
+    {
+        printf("Numbers must be from 1 to 100");
+    }
+
+    else
+    {
+        for (int i = n-1; i >= 0; i--)
+        {
+            printf("%i ", a[i]);
+        }
+        
+    }
 
 
-  for (c = 0; c < n; c++)
-  a[c] = b[c];
-  printf("Оберненний масив:\n");
-
-  for (c = 0; c < n; c++)
-  printf("%d ", a[c]);
-
-  return 0;
-  }
 
 }
